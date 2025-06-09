@@ -18,6 +18,6 @@ const config = {
 };
 const proxy = new Proxy(config);
 
-module.exports = function(app) {
+module.exports = function (app) {
   app.use(proxy.express());
 };

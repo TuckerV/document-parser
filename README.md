@@ -1,21 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) using the command: `yarn create react-app my-app --template git+ssh://git@github.com/DomoApps/advanced.git`
+# 🧬 DocxTemplater Angular Parser App
 
-# DomoApps Advanced App Platform Package
+This application provides a complete, step-by-step workflow for converting `.docx` files into fully functional [DocxTemplater](https://docxtemplater.com/) templates using Angular-style syntax. The goal is to ensure reliable formatting, valid logic, and dynamic content compatibility for automated document generation.
 
-Create React App Template optimized for advanced DomoApp usage.
-- The manifest and thumbnail are provided in the `public` folder.
-- The proxy server is setup with `@domoinc/ryuu-proxy` for local development to your domo instance.
-- An upload script has been added to the package.json for easy upload.
+---
 
-Steps to get going:
-1) Use the domoapps cli to login to your Domo instance `domo login`
-2) Upload your base app to your Domo instance using `yarn upload` or `yarn upload`
-3) The project will build, add all assets to the `build` folder, and then upload the assets to Domo
-4) The `manifest.json` file in the `build` folder will be modified by the domoapps cli to include an `id` property. You will want to copy this `id` into the manifest in your `public` folder so that it doesn't continue to create a new `id` on each upload
-5) If you intend to use AppDB, make sure to also add a `proxyId` to the `manifest.json` file in your `public` folder. See [documentation](https://developer.domo.com/docs/dev-studio/step4#Set%20Up%20Your%20Proxy) for more info.
-6) Generate new `components` and `reducers` using the `yarn generate` command (more info below).
+## 🚀 Goal
 
-## basic cra-template information
+- **Convert `.docx` files** into dynamic templates compatible with DocxTemplater and Angular parser logic.
+- **Normalize placeholders, loops, and conditionals** to follow strict, error-free syntax for automated document workflows.
+- **Validate and clean** all template logic for robust, production-ready output.
+
+---
+
+## 🛠️ How to Use
+
+### 1. Prepare Your DOCX File
+- Start with any `.docx` file containing text, tables, and placeholders (e.g., `%key%`).
+
+### 2. Upload and Parse
+- Use the app's upload interface to select your `.docx` file.
+- The app will automatically:
+  - Convert `%key%` placeholders to `{key}` or `{key.subkey}`
+  - Wrap repeating sections with `{#items}...{/}` blocks
+  - Normalize logical operators (`and` → `&&`, `or` → `||`)
+  - Refactor `if/else` blocks to Angular-compliant `{#condition}...{#!condition}...{/}`
+  - Remove or replace invalid filters and tags
+  - Ensure all loops/conditionals are properly closed
+  - Remove all `{#false}` tags and `%` symbols
+
+### 3. Review and Export
+- Preview the cleaned and converted template in the app.
+- Download the finalized `.docx` file, ready for use with DocxTemplater and live data.
+
+---
+
+## 📋 Conversion Checklist (Summary)
+- All `%key%` → `{key}`
+- All loops and conditionals use `{#}`, `{^}`, `{!}`, and `{/}` blocks
+- No orphaned or mismatched tags
+- No `{#false}` or `%` symbols remain
+- All expressions are Angular-compliant
+- Output is a `.docx` file compatible with DocxTemplater
+
+For full details, see `src/memory/index.md`.
+
+---
+
+## 🧩 End Product Requirements
+- `.docx` file compatible with DocxTemplater
+- Fully dynamic, readable by Angular parser
+- All logic clean and closed
+- Supports live data rendering without error
+
+---
+
+## 🏁 Example Workflow
+1. Upload your `.docx` file.
+2. The app parses and transforms all content according to the checklist.
+3. Review the output and download your ready-to-use template.
+
+---
+
+## ℹ️ More Information
+- See `src/memory/index.md` for the authoritative checklist and technical details.
+- For DocxTemplater documentation, visit [docxtemplater.com](https://docxtemplater.com/).
 
 - [Getting Started](https://create-react-app.dev/docs/getting-started) – How to create a new app.
 - [User Guide](https://create-react-app.dev) – How to develop apps bootstrapped with Create React App.

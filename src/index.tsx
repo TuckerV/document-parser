@@ -5,6 +5,7 @@ import RyuuJS from 'ryuu.js';
 
 import { store } from './reducers';
 import App from 'components/app';
+import { ToastContainer } from 'react-toastify';
 
 import './styles/index.scss';
 
@@ -15,9 +16,8 @@ const container = document.getElementById('root');
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(container!);
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <App />
+    <ToastContainer theme="colored" pauseOnHover={false} />
+  </Provider>,
 );
